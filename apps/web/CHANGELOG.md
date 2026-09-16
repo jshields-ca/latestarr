@@ -1,5 +1,16 @@
 # @latestarr/web
 
+## 0.6.0
+
+### Minor Changes
+
+- 12df8b1: Newsletter admin fixes from design review and a real send-now test run: newsletter cards now show a human-readable schedule ("Weekly on Monday at 8:00 AM") instead of the raw cron string for schedules the Simple picker can express; the Add newsletter dialog defaults Timezone to the browser's own zone instead of always UTC, and pre-selects the SMTP profile when there's exactly one; the Add/Edit newsletter dialogs group their Schedule and Delivery fields into labeled sections instead of one flat list; a "Send now" that completes with nothing actually sent (no linked source or recipient group) is now visually distinguished from a real send in Send History and on the Dashboard; a genuine send failure (e.g. an unreachable source) now returns a specific, structured error instead of a bare "Internal Server Error", shown inline the moment the send fails; and Send History now refreshes automatically right after a "Send now" click resolves instead of requiring a page reload.
+
+### Patch Changes
+
+- 2b050c7: Add a proper "Page not found" screen (with a link back to the Dashboard) for unknown routes, replacing the blank content area you'd get from mistyping a URL like `/smtp-profiles` instead of `/smtp`. Also fix the first-admin signup form only flagging the Password field when submitted empty — Name and Email now get the same red-border-and-inline-message treatment when they're missing too.
+- 9f184d3: Fix five usability bugs in the template editor: GrapesJS's default panel buttons (Open Blocks, Settings, Layers, etc.) rendered as blank squares because their built-in icons depend on Font Awesome, which this app never loads; the editor's selection/active-state accent showed GrapesJS's own stock orange (from the grapesjs-mjml plugin's custom theme) instead of the app's Bloom pink; clicking the Media List block's preview card selected an inner generic child instead of the block itself, hiding its real Content type/Sort/Number of items traits behind an unlabeled "select parent" step; the Move up/down toolbar buttons rendered as thin unicode arrows next to GrapesJS's bold icons and silently no-opped at the top/bottom of a list with no feedback; and the editor had no unsaved-changes protection at all, so a refresh or the page's own Back button silently discarded in-progress work.
+
 ## 0.5.0
 
 ### Minor Changes
